@@ -3,14 +3,15 @@
 public class Main {
     public static void main(String[] args) {
         Journal journal = new Journal();
-        Memory memory = new Memory("Birthday", "My 18 years old party", "happiness", 2024, 11, 13);
+        Memory memory = new Memory("Mommy Birthday", "My 18 years old party", "happiness", 2024, 11, 13);
         Memory memory1 = new Memory("End of parent's relationship", "I miss him", "sadness", 2020,10,5);
 
         journal.addMemory(memory);
         journal.addMemory(memory1);
 
-        journal.findbyEmotion("happiness");
-        journal.findbyEmotion("sadness");
-
+        //journal.findbyEmotion("happiness");
+        //journal.findbyEmotion("sadness");
+        journal.findbyDescription("i");
+        journal.findbyName("Birthday");
     }
 }

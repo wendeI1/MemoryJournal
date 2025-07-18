@@ -21,19 +21,26 @@ public class Journal {
     }
 
     //Find by name
-    public ArrayList<Memory> findbyName(String name){
+    public void findbyName(String name){
         ArrayList<Memory> nameResults = new ArrayList<>();
 
-        for (Memory memory : memories){
-            if (memory.getName().equalsIgnoreCase(name.toLowerCase())){
-                nameResults.add(memory);
+        for (Memory memory : memories) {
+            if (memory.getName().equalsIgnoreCase(name.toLowerCase())) {
+                    nameResults.add(memory);
             }
         }
-        return nameResults;
+        if (nameResults.isEmpty()){
+            System.out.println("MEMORIES NAMED " + name.toUpperCase() + " NOT FOUND.");
+        }else {
+            System.out.println("MEMORIES NAMED " + name.toUpperCase());
+            for (Memory memory : nameResults) {
+                memory.showMemory();
+            }
+        }
     }
 
     //Find by description
-    public ArrayList<Memory> findbyDescription(String desc){
+    public void findbyDescription(String desc){
         ArrayList<Memory> descResults = new ArrayList<>();
 
         for (Memory memory : memories){
@@ -41,7 +48,6 @@ public class Journal {
                 descResults.add(memory);
             }
         }
-        return descResults;
     }
     //Find based on the provided emotion
     public void findbyEmotion(String emotion){
