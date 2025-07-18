@@ -1,9 +1,8 @@
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class Journal {
 
-    private ArrayList<Memory> memories = new ArrayList<>();
+    private final ArrayList<Memory> memories = new ArrayList<>();
 
     //Add a memory
     public void addMemory(Memory memory){
@@ -45,19 +44,24 @@ public class Journal {
         return descResults;
     }
     //Find based on the provided emotion
-    public ArrayList<Memory> findbyEmotion(String emotion){
+    public void findbyEmotion(String emotion){
         ArrayList<Memory> emoResults = new ArrayList<>();
 
-        Memory.Emotion emotion1 = Memory.Emotion.valueOf(emotion.toUpperCase());
+        try {
+            Memory.Emotion emotion1 = Memory.Emotion.valueOf(emotion.toUpperCase());
 
-        for (Memory memory : memories){
-            if (memory.getRelatedEmotion().equals(emotion1)){
-                emoResults.add(memory);
+            for (Memory memory : memories) {
+                if (memory.getRelatedEmotion().equals(emotion1)) {
+                    emoResults.add(memory);
+                }
             }
+            System.out.println("MEMORIES RELATED TO " + emotion1);
+            for (Memory memory : emoResults) {
+                memory.showMemory();
+            }
+        } catch (IllegalArgumentException e) {
+            System.out.println("Invalid emotion!");
+            System.out.println("Emotions: Happines, sadness, nostalgia, anger");
         }
-        for(Memory memory : emoResults){
-            memory.showMemory();
-        }
-        return emoResults;
     }
 }

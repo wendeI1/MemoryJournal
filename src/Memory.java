@@ -1,20 +1,24 @@
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Memory {
 
     private String name;
     private String description;
     private Emotion relatedEmotion;
+    private final LocalDate date;
 
     public enum Emotion{
         HAPPINESS, SADNESS, NOSTALGIA, ANGER
     }
 
+    DateTimeFormatter formattedDate = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+
     public Memory(String name, String description, String strEmotion, int yyyy, int mm, int dd){
         this.name = name;
         this.description = description;
         this.relatedEmotion = Emotion.valueOf(strEmotion.toUpperCase());
-        LocalDate date = LocalDate.of(yyyy, mm, dd);
+        this.date = LocalDate.of(yyyy, mm, dd);
     }
 
     public String getName() {
@@ -42,6 +46,9 @@ public class Memory {
     }
 
     protected void showMemory(){
-        System.out.println("teste");
+        System.out.println("--- " + this.name + " ---");
+        System.out.println("Description: " + this.description);
+        System.out.println("Related emotion: " + this.relatedEmotion);
+        System.out.println("Date: " + this.date.format(formattedDate));
     }
 }
