@@ -15,8 +15,8 @@ public class Memory {
     DateTimeFormatter formattedDate = DateTimeFormatter.ofPattern("MM/dd/yyyy");
 
     public Memory(String name, String description, String strEmotion, int yyyy, int mm, int dd){
-        this.name = name;
-        this.description = description;
+        this.name = name.toUpperCase();
+        this.description = description.toUpperCase();
         this.relatedEmotion = Emotion.valueOf(strEmotion.toUpperCase());
         this.date = LocalDate.of(yyyy, mm, dd);
     }
