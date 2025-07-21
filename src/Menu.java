@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Menu {
     //TO DO
-    private Scanner sc = new Scanner(System.in);
+    private final Scanner sc = new Scanner(System.in);
 
     private void options(){
         System.out.println("Welcome to Memory journal!");
